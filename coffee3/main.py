@@ -10,14 +10,15 @@ money = MoneyMachine()
 
 while True:
     a = input('What would you like? : ')
-    drink = menu.find_drink(a)
+    
     if a == 'report':
         coffeemaker.report()
         money.report()
     elif a== 'off':
         quit()
     
-    elif drink != None:
+    elif menu.find_drink(a) != None:
+        drink = menu.find_drink(a)
         if coffeemaker.is_resource_sufficient(drink):
             if money.make_payment(drink.cost):
                 coffeemaker.make_coffee(drink)
